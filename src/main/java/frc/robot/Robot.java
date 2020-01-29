@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.subsystems.DriveTrain;
+import frc.subsystems.Piston;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,8 +25,13 @@ public class Robot extends TimedRobot {
 
 //initialize
 public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MASTER_ID, RobotMap.LEFT_FOLLOWER_ONE_ID,
-RobotMap.LEFT_FOLLOWER_TWO_ID, RobotMap.RIGHT_MASTER_ID, RobotMap.RIGHT_FOLLOWER_ONE_ID,
-RobotMap.RIGHT_FOLLOWER_TWO_ID);
+  RobotMap.LEFT_FOLLOWER_TWO_ID, RobotMap.RIGHT_MASTER_ID, RobotMap.RIGHT_FOLLOWER_ONE_ID,
+  RobotMap.RIGHT_FOLLOWER_TWO_ID);
+public static Piston piston = new Piston();
+
+// Initialize OI
+public static OI oi = new OI();
+
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;

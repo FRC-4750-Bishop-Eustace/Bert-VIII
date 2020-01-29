@@ -1,12 +1,22 @@
 package frc.robot;
 
-public class OI{
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.commands.TogglePiston;
 
-    // Joysticks 
-    public static Joystick driveStick = new Joystick(RobotMap.DRIVESTICK_PORT);
-    public static Joystick controller = new Joystick(RobotMap.CONTROLLER_PORT);
+public class OI {
+    
+        // Joysticks 
+        public static Joystick driveStick = new Joystick(RobotMap.DRIVESTICK_PORT);
+        public static Joystick controller = new Joystick(RobotMap.CONTROLSTICK_PORT);
+    
+        //buttons
+        JoystickButton togglePiston = new JoystickButton(driveStick, 1);
 
-    public OI(){
+        //instanciate all the button operations
+        public OI(){
+        
+        togglePiston.whenReleased(new TogglePiston());
 
+        }
     }
-}
