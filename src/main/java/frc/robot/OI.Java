@@ -2,7 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.commands.TogglePiston;
+import frc.commands.ReverseDriveTrain;
 
 public class OI {
     
@@ -11,12 +11,11 @@ public class OI {
         public static Joystick controller = new Joystick(RobotMap.CONTROLSTICK_PORT);
     
         //buttons
-        JoystickButton togglePiston = new JoystickButton(driveStick, 1);
+        JoystickButton toggleDirection = new JoystickButton(driveStick, 0);
+
 
         //instanciate all the button operations
         public OI(){
-        
-        togglePiston.whenReleased(new TogglePiston());
-
+            toggleDirection.whenReleased(new ReverseDriveTrain());
         }
     }

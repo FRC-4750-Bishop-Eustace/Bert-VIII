@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.subsystems.DriveTrain;
-import frc.subsystems.Piston;
+import frc.subsystems.IntestineTransport;
 
 
 /**
@@ -23,11 +23,12 @@ import frc.subsystems.Piston;
  */
 public class Robot extends TimedRobot {
 
-//initialize
+// initialize
 public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MASTER_ID, RobotMap.LEFT_FOLLOWER_ONE_ID,
   RobotMap.LEFT_FOLLOWER_TWO_ID, RobotMap.RIGHT_MASTER_ID, RobotMap.RIGHT_FOLLOWER_ONE_ID,
   RobotMap.RIGHT_FOLLOWER_TWO_ID);
-public static Piston piston = new Piston();
+public static IntestineTransport intestineTransport = new IntestineTransport(RobotMap.CONVEYOR_2_ID,
+RobotMap.CONVEYOR_3_ID);
 
 // Initialize OI
 public static OI oi = new OI();

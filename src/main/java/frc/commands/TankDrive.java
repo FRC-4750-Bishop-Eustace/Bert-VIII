@@ -4,9 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
 
-/**
- * Drives the drive train with a joystick
- */
+// Drives the drive train with a joystick
 
 public class TankDrive extends Command {
 
