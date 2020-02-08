@@ -8,10 +8,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.subsystems.DriveTrain;
 import frc.subsystems.IntestineTransport;
+import frc.subsystems.Shooter;
 
 
 /**
@@ -28,7 +30,8 @@ public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MASTER_ID, Ro
   RobotMap.LEFT_FOLLOWER_TWO_ID, RobotMap.RIGHT_MASTER_ID, RobotMap.RIGHT_FOLLOWER_ONE_ID,
   RobotMap.RIGHT_FOLLOWER_TWO_ID);
 public static IntestineTransport intestineTransport = new IntestineTransport(RobotMap.CONVEYOR_2_ID,
-RobotMap.CONVEYOR_3_ID);
+  RobotMap.CONVEYOR_3_ID);
+public static Shooter shooter = new Shooter(RobotMap.SHOOTER_1_ID, RobotMap.SHOOTER_2_ID, RobotMap.CONVEYOR_4_ID);
 
 // Initialize OI
 public static OI oi = new OI();
@@ -100,7 +103,9 @@ public static OI oi = new OI();
    */
   @Override
   public void teleopPeriodic() {
+    Scheduler.getInstance().run();
   }
+  
 
 
   /**

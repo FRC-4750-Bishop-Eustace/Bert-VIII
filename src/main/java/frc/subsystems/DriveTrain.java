@@ -2,8 +2,6 @@
 
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.commands.TankDrive;
@@ -16,8 +14,6 @@ public class DriveTrain extends Subsystem {
 
     // Create motors
     public WPI_TalonSRX leftMaster, leftFollowerOne, leftFollowerTwo, rightMaster, rightFollowerOne, rightFollowerTwo;
-    // Create motor groups
-    SpeedControllerGroup leftMotors, rightMotors;
     // Create drive
     DifferentialDrive robotDrive;
     boolean reversed = false;
@@ -43,7 +39,7 @@ public class DriveTrain extends Subsystem {
         leftMaster.setSensorPhase(RobotMap.LEFT_PHASE);
         rightMaster.setInverted(RobotMap.RIGHT_INVERT);
         rightMaster.setSensorPhase(RobotMap.RIGHT_PHASE);
-
+        
         // Set motors to follow masters
         leftFollowerOne.follow(leftMaster);
         leftFollowerTwo.follow(leftMaster);
@@ -53,7 +49,7 @@ public class DriveTrain extends Subsystem {
         leftFollowerTwo.setInverted(InvertType.FollowMaster);
         rightFollowerOne.setInverted(InvertType.FollowMaster);
         rightFollowerTwo.setInverted(InvertType.FollowMaster);
-
+        
         robotDrive = new DifferentialDrive(leftMaster, rightMaster);
         // Stop "output not updated often enough" error from printing
         robotDrive.setSafetyEnabled(false);
@@ -66,7 +62,7 @@ public class DriveTrain extends Subsystem {
      * @param rotate + is right, - is left
      */
     public void joystickDrive(double speed, double rotate) {
-        robotDrive.arcadeDrive(desensitize(speed * 0.85, 0.577), rotate * 0.85);
+        robotDrive.arcadeDrive(cube(speed), cube(rotate));
         // .28, .15
     }
 
@@ -112,8 +108,7 @@ public class DriveTrain extends Subsystem {
      * Desensitizes the joystick values at low speeds
      * 
      */
-    protected double desensitize(double value, double gain) {
-        return gain * Math.pow(value, 3) + (1 - gain) * value;
+    protected double cube(double value) {
+        return 0.2 * Math.pow(value, 3) + (1 - 0.2) * value;
     }
-
 }

@@ -7,12 +7,12 @@ public class RobotMap {
     public static final int CONTROLSTICK_PORT = 1;
 
     // Drive train motor IDs (CAN)
-    public static final int LEFT_MASTER_ID = 2;
-    public static final int LEFT_FOLLOWER_ONE_ID = 0;
-    public static final int LEFT_FOLLOWER_TWO_ID = 1;
-    public static final int RIGHT_MASTER_ID = 5;
-    public static final int RIGHT_FOLLOWER_ONE_ID = 3;
-    public static final int RIGHT_FOLLOWER_TWO_ID = 4;
+    public static final int LEFT_MASTER_ID = 0;
+    public static final int LEFT_FOLLOWER_ONE_ID = 1;
+    public static final int LEFT_FOLLOWER_TWO_ID = 2;
+    public static final int RIGHT_MASTER_ID = 13;
+    public static final int RIGHT_FOLLOWER_ONE_ID = 14;
+    public static final int RIGHT_FOLLOWER_TWO_ID = 15;
 
     // Drive Train Constants
     public static final double WHEEL_RADIUS = 3;
@@ -39,4 +39,9 @@ public class RobotMap {
 	public static final int CONVEYOR_4_ID = 0;
 	public static final int CONVEYOR_3_ID = 1;
     public static final int CONVEYOR_2_ID = 2;
+	public static int SHOOTER_ID;
+
+    // Shooter Motors
+    public static final int SHOOTER_1_ID = 0;
+    public static final int SHOOTER_2_ID = 1;
 }
