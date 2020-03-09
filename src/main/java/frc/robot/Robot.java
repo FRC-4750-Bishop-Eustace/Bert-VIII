@@ -7,13 +7,21 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.subsystems.Climber;
+//import frc.subsystems.Climber;
 import frc.subsystems.DriveTrain;
 import frc.subsystems.IntestineTransport;
-import frc.subsystems.Shooter;
+import frc.subsystems.NoPIDShooter;
+//import frc.subsystems.ShooterSubsystem;
 
 
 /**
@@ -26,12 +34,13 @@ import frc.subsystems.Shooter;
 public class Robot extends TimedRobot {
 
 // initialize
-public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MASTER_ID, RobotMap.LEFT_FOLLOWER_ONE_ID,
-  RobotMap.LEFT_FOLLOWER_TWO_ID, RobotMap.RIGHT_MASTER_ID, RobotMap.RIGHT_FOLLOWER_ONE_ID,
-  RobotMap.RIGHT_FOLLOWER_TWO_ID);
-public static IntestineTransport intestineTransport = new IntestineTransport(RobotMap.CONVEYOR_2_ID,
-  RobotMap.CONVEYOR_3_ID);
-public static Shooter shooter = new Shooter(RobotMap.SHOOTER_1_ID, RobotMap.SHOOTER_2_ID, RobotMap.CONVEYOR_4_ID);
+public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MASTER_ID, RobotMap.LEFT_FOLLOWER_ONE_ID, RobotMap.LEFT_FOLLOWER_TWO_ID, RobotMap.RIGHT_MASTER_ID, RobotMap.RIGHT_FOLLOWER_ONE_ID, RobotMap.RIGHT_FOLLOWER_TWO_ID);
+public static IntestineTransport intestineTransport = new IntestineTransport();
+//public static ShooterSubsystem shooter = new ShooterSubsystem();
+public static NoPIDShooter noPIDShooter = new NoPIDShooter();
+public static Climber climber = new Climber();
+NetworkTable table = NetworkTableInstance.getDefault().getTable("dashboard");
+
 
 // Initialize OI
 public static OI oi = new OI();
@@ -98,6 +107,11 @@ public static OI oi = new OI();
     }
   }
 
+  @Override
+  public void teleopInit() {
+
+    }
+
   /**
    * This function is called periodically during operator control.
    */
@@ -106,7 +120,9 @@ public static OI oi = new OI();
     Scheduler.getInstance().run();
   }
   
-
+  @Override
+  public void testInit() {
+}
 
   /**
    * This function is called periodically during test mode.
@@ -115,5 +131,7 @@ public static OI oi = new OI();
   public void testPeriodic() {
   }
 
-
+  private void outputData(){
+  
+  }
 }

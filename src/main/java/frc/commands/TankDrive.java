@@ -17,9 +17,17 @@ public class TankDrive extends Command {
     protected void execute() {
         // Pass the joystick values to joystickDrive()
         if (!Robot.driveTrain.reversed()) {
-            Robot.driveTrain.joystickDrive(-OI.driveStick.getY(), OI.driveStick.getThrottle());
+            if(!Robot.driveTrain.slowMode()){
+            Robot.driveTrain.joystickDrive(-OI.driveStick.getY() / 2, OI.driveStick.getThrottle() / 3);
+            } else {
+                Robot.driveTrain.joystickDrive(-OI.driveStick.getY(), OI.driveStick.getThrottle());
+            }
         } else {
-            Robot.driveTrain.joystickDrive(OI.driveStick.getY(), OI.driveStick.getThrottle());
+            if(!Robot.driveTrain.slowMode()){
+            Robot.driveTrain.joystickDrive(OI.driveStick.getY() / 2, OI.driveStick.getThrottle() / 3);
+            } else {
+                Robot.driveTrain.joystickDrive(OI.driveStick.getY(), OI.driveStick.getThrottle());
+            }
         }
     }
 
